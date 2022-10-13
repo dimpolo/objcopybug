@@ -40,3 +40,20 @@ MEMORY
   RAM : ORIGIN = 0x20000000, LENGTH = 18K
 }
 ```
+
+Cargo.toml
+```toml
+[dependencies]
+cortex-m = "0.7.3"
+cortex-m-rt = "0.6.15"
+stm32g0xx-hal = { version = "0.1.5", features = ["rt", "stm32g041"] }
+
+rtt-target = { version = "0.3.1", features = ["cortex-m"] }
+panic-probe = { version = "0.3.0", features = ["print-rtt"] }
+
+[profile.release]
+codegen-units = 1
+debug = true
+lto = true
+opt-level = "s"
+```
